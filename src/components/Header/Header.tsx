@@ -5,6 +5,9 @@ import Container from '@material-ui/core/Container';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
+import LinearProgress from '@material-ui/core/LinearProgress';
+import Fade from '@material-ui/core/Fade';
+import { characterStore } from '../../store/Character';
 
 const useStyles = makeStyles( theme => ({
   toolbar: {
@@ -12,10 +15,15 @@ const useStyles = makeStyles( theme => ({
     paddingLeft: 0,
     color: theme.palette.common.white
   },
+  progress: {
+    marginBottom: -4,
+  }
 }));
 
 export const Header : React.FC = () => {
   const classes = useStyles();
+  const { state } = React.useContext(characterStore);
+  const { loading } = state;
 
   return (
     <AppBar color="primary" elevation={2}>
@@ -26,6 +34,9 @@ export const Header : React.FC = () => {
           </Box>
         </Container>
       </Toolbar>
+      <Fade in={loading}>
+        <LinearProgress className={classes.progress} color='secondary'/>
+      </Fade>
     </AppBar>
   )
 }

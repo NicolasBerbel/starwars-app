@@ -3,11 +3,11 @@ import { createMuiTheme } from '@material-ui/core/styles';
 const theme = createMuiTheme({
   palette: {
     primary: {
-      main: '#00BCD4',
+      main: '#4CAF50',
       contrastText: '#fff'
     },
     secondary: {
-      main: '#E91E63',
+      main: '#7C4DFF',
     },
   },
   props: {
@@ -17,10 +17,7 @@ const theme = createMuiTheme({
     },
     MuiButtonBase: {
       disableRipple: true,
-    },
-    MuiIcon: {
-      fontSize: 'small'
-    },
+    }
   },
 });
 theme.overrides = theme.overrides || {};

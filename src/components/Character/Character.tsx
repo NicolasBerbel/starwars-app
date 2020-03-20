@@ -33,11 +33,9 @@ const useStyles = makeStyles<Theme>((theme) => ({
     backgroundColor: 'rgba(0, 0, 0, 0.08)',
     backgroundPosition: 'center',
     transition: 'background-size .15s ease',
-    cursor: 'pointer'
   },
   title: {
     marginBottom: 0,
-    cursor: 'pointer'
   },
   heightValue: {
     fontWeight: 'bold',
@@ -74,6 +72,7 @@ export const Character : React.FC<ICharacterProps> = props => {
   const classes = useStyles();
   const isLoadingStarship = (id : number) => loadingStarships.includes(id);
   const isLoadedStarship = (id : number) => Object.keys(starships).includes(id.toString());
+  const height = (parseInt(props.height) / 100);
 
   React.useEffect( () => {
     starshipsIds.forEach(( id => {
@@ -101,11 +100,13 @@ export const Character : React.FC<ICharacterProps> = props => {
               <span className={classes.genderValue}>{props.gender}</span>
             </Box>
           )}
-          <Box color={'grey.500'} display={'flex'} alignItems={'start'} mb={1}>
-            <Typography variant={'body2'} className={classes.heightValue}>
-              {(parseInt(props.height) / 100).toFixed(2)}m
-            </Typography>
-          </Box>
+          {!isNaN(height) && (
+            <Box color={'grey.500'} display={'flex'} alignItems={'start'} mb={1}>
+              <Typography variant={'body2'} className={classes.heightValue}>
+                {height.toFixed(2)}m
+              </Typography>
+            </Box>
+          )}
           <CardActions>
             {props.starships[0] && (
               <Box justifyContent='flex-end'>
@@ -118,11 +119,11 @@ export const Character : React.FC<ICharacterProps> = props => {
                     )
                   ))
                 )}>
-                  <Badge color='primary' badgeContent={props.starships.length}>
+                  <Badge color='secondary' badgeContent={props.starships.length}>
                     <Button
                       size='small'
                       color='inherit'
-                      variant='text'
+                      variant='outlined'
                       onClick={() => setDetailsOpen(true)}
                     >
                       <span>Starships</span>

@@ -31,7 +31,7 @@ export const CharacterList : React.FC = () => {
 
   return (
     <>
-    <AppBar position="sticky" elevation={2} color="inherit" className={classes.bar}>
+    <AppBar position="sticky" elevation={loading ? 0 : 2} color={loading ? 'transparent' : 'inherit'} className={classes.bar}>
       <Box padding={2}>
         <CharacterPagination />
       </Box>

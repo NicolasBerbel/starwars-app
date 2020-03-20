@@ -9,6 +9,9 @@ const useStyles = makeStyles(theme => ({
     marginBottom: theme.spacing(3),
     ...(theme.overrides && theme.overrides.MuiToolbar && theme.overrides.MuiToolbar.regular),
   },
+  container: {
+    paddingBottom: theme.spacing(3)
+  }
 }));
 
 export const Layout : React.FC = ({children}) => {
@@ -18,7 +21,7 @@ export const Layout : React.FC = ({children}) => {
     <>
       <Header />
       <div className={classes.toolbar} />
-      <Container component="main" maxWidth="lg">
+      <Container component="main" maxWidth="lg" className={classes.container}>
         { children }
       </Container>
     </>

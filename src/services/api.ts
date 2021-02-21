@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: process.env.API_URL || 'https://swapi.co/api/',
+  baseURL: process.env.API_URL || 'https://swapi.dev/api/',
 });
 
 export interface IApiListResponse<T> {
